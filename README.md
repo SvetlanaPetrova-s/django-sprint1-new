@@ -1,1 +1,1 @@
-# django-sprint1-new
+# Blogicum
