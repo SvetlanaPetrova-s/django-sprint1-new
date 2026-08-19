@@ -149,6 +149,7 @@ dmypy.json
 media/
 /blogicum/static/
 /blogicum/static-dev/
+html/
 
 # Testing
 build_tests/
