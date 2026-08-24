@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404
 
 
+# Аннотация типа для списка постов
 posts = [
     {
         'id': 0,
@@ -45,19 +46,19 @@ posts = [
     },
 ]
 
+# Создаём словарь для быстрого поиска по id
+posts_dict = {post['id']: post for post in posts}
 
 def index(request):
-    template = 'blog/index.html'
-    context = {'posts': posts[::-1]}
-    return render(request, template, context)
+    context = {'posts': posts}
+    return render(request, 'blog/index.html', context)
 
 
-def post_detail(request, id):
-    for p in posts:
-        if p['id'] == id:
-            context = {'post': p}
-            return render(request, 'blog/detail.html', context)
-    raise Http404("Пост не найден")
+def post_detail(request, post_id):
+    post = posts_dict.get(post_id)
+    if post is None:
+        raise Http404("Пост не найден")
+    return render(request, 'blog/detail.html', {'post': post})
 
 
 def category_posts(request, category_slug):
