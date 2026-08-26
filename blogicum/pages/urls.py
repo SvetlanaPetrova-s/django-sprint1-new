@@ -1,4 +1,5 @@
 from django.urls import path
+
 from django.views.generic import TemplateView  # <-- импортируем TemplateView
 
 app_name = 'pages'
