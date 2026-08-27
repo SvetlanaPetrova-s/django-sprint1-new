@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import Http404
+from typing import List
 
 
 # Аннотация типа для списка постов
-posts = [
+posts: List[dict] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
